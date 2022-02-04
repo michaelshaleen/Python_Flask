@@ -19,9 +19,9 @@ def home():
 
 @views.route("/profile")
 def profile():
-  args = request.args
-  name = args.get('name')
-  return render_template("index.html", name=name)
+  # args = request.args
+  # name = args.get('name')
+  return render_template("profile.html")
 
 
 @views.route("/json")
