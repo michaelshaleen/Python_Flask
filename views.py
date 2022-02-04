@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request, jsonify
 
 views = Blueprint(__name__, "views")
 
@@ -12,6 +12,19 @@ def home():
 
 # user goes to this url, returns this where
   # name equals the value of username
-@views.route("/profile/<username>")
-def profile(username):
-  return render_template("index.html", name=username)
+  # pass in username
+# @views.route("/profile/<username>")
+# def profile(username):
+#   return render_template("index.html", name=username)
+
+@views.route("/profile")
+def profile():
+  args = request.args
+  name = args.get('name')
+  return render_template("index.html", name=name)
+
+
+@views.route("/json")
+def get_json():
+  # json dictionary
+  return jsonify({'name': 'tim', 'height': 7})
